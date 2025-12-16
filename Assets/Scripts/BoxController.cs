@@ -1,11 +1,13 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class BoxController : MonoBehaviour
 {
     public GameObject miniGamePrefab;
     public TMP_Text boxLabel;
     public bool isPlayerWinner = false;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -69,5 +71,7 @@ public class BoxController : MonoBehaviour
         }
         GetComponent<Animator>().SetTrigger("Win");
         GameController.instance.CollectMap();
+        
+        
     }
 }

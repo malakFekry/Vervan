@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.AI;
+using UnityEngine.Playables;
 
 public class GameController : MonoBehaviour
 {
@@ -7,6 +7,8 @@ public class GameController : MonoBehaviour
     public GameObject winPanel;
     public int mapsCollected = 0;
     public GameObject guides;
+    public PlayableDirector cutsceneDirector;
+    public GameObject guideText;
     // This class can be expanded to manage overall game state, levels, etc.
     public static GameController instance;
     void Awake()
@@ -34,6 +36,11 @@ public class GameController : MonoBehaviour
         if (mapsCollected >= 2) // Assuming 2 maps are needed to win
         {
             guides.SetActive(true);
+            guideText.SetActive(true);
+        if(cutsceneDirector != null)
+        {
+            cutsceneDirector.Play();
+        }
         }
     }
 }
