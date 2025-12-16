@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        
         InitializeGame();
         if (pauseButton) pauseButton.onClick.AddListener(TogglePause);
     }

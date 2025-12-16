@@ -28,6 +28,13 @@ public class BoxController : MonoBehaviour
     {
         if(other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E) && !isPlayerWinner)
         {
+
+            if (UIManager.Instance == null) Debug.Log("null");
+            else
+            {
+                Debug.Log("not null");
+                UIManager.Instance.OnEnteringGame();
+            }
             GameObject miniGameInstance = Instantiate(miniGamePrefab);
             if(miniGameInstance.GetComponentInChildren<GameManager>() != null)
             {
@@ -39,6 +46,7 @@ public class BoxController : MonoBehaviour
             }
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            
             //boxLabel.text = "";
         }
     }
@@ -53,6 +61,12 @@ public class BoxController : MonoBehaviour
     {
         isPlayerWinner = true;
         boxLabel.text = "";
+        if (UIManager.Instance == null) Debug.Log("null");
+        else
+        {
+            Debug.Log("not null");
+            UIManager.Instance.OnWinningGame();
+        }
         GetComponent<Animator>().SetTrigger("Win");
         GameController.instance.CollectMap();
     }

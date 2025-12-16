@@ -1,0 +1,176 @@
+.panel {
+    background-color: rgba(0, 0, 0, 0.9);
+    align-items: center;
+}
+
+.hide {
+    display: none;
+}
+
+.menu {
+    min-width: 50%;
+    -unity-text-align: upper-left;
+    justify-content: flex-end;
+    align-self: auto;
+    position: relative;
+}
+
+.unity-button {
+    flex-grow: 1;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    border-top-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    -unity-font: url("project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=c311e48f5bed8b64e91477c023e96a03&type=3#NotInter-Regular");
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-center;
+    -unity-text-outline-width: 3px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+    font-size: 25px;
+    -unity-font-style: bold;
+    width: 50%;
+    height: 150px;
+    min-height: initial;
+    min-width: 50%;
+    max-height: 100px;
+    margin-top: 8px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    margin-left: 8px;
+    max-width: 50%;
+    align-items: stretch;
+    position: relative;
+    align-self: center;
+}
+
+.unity-button:hover {
+    scale: 1.05 1.05;
+}
+
+.PauseButton {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    width: 50px;
+    min-width: 100px;
+    align-self: flex-start;
+    margin-left: 25px;
+    margin-top: 25px;
+}
+
+.label {
+    font-size: 45px;
+    -unity-font: url("project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=c311e48f5bed8b64e91477c023e96a03&type=3#NotInter-Regular");
+    -unity-font-style: bold;
+}
+
+#HealthBar {
+    height: 60px;
+    width: 350px;
+}
+
+#HealthBar > .unity-progress-bar__container {
+    background-color: rgb(211, 211, 211);
+    border-radius: 15px;
+    border: 2px solid white;
+    height: 100%;
+    width: 100% min-height 0;
+    max-height: none;
+    padding: 2px;
+}
+
+#HealthBar > .unity-progress-bar__container > .unity-progress-bar__background {
+    height: 100%;
+    padding: 2px;
+    background-color: rgb(211, 211, 211);
+    border-radius: 15px;
+    border: 2px solid white;
+}
+
+#HealthBar > .unity-progress-bar__container > .unity-progress-bar__background > .unity-progress-bar__progress {
+    background-color: rgb(0, 255, 0);
+    border-radius: 13px;
+    height: 100%;
+    transition: width 0.3s;
+}
+
+#SkillBar {
+    height: 60px;
+    width: 350px;
+}
+
+#SkillBar > .unity-progress-bar__container {
+    background-color: rgb(211, 211, 211);
+    border-radius: 15px;
+    border: 2px solid white;
+    height: 100%;
+    width: 100% min-height 0;
+    max-height: none;
+    padding: 2px;
+}
+
+#SkillBar > .unity-progress-bar__container > .unity-progress-bar__background {
+    height: 100%;
+    padding: 2px;
+    background-color: rgb(211, 211, 211);
+    border-radius: 15px;
+    border: 2px solid white;
+}
+
+#SkillBar > .unity-progress-bar__container > .unity-progress-bar__background > .unity-progress-bar__progress {
+    background-color: rgb(30, 144, 255);
+    border-radius: 13px;
+    height: 100%;
+    transition: width 0.3s;
+}
+
+.root {
+    width: 100%;
+    height: 100%;
+}
+
+.screen {
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    pointer-events: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+}
+
+.screen.active {
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.active {
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.pauseMenu {
+    background-color: rgb(128, 98, 35);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-top-width: 20px;
+    border-right-width: 20px;
+    border-bottom-width: 20px;
+    border-left-width: 20px;
+    border-left-color: rgba(0, 0, 0, 0.71);
+    border-right-color: rgba(0, 0, 0, 0.71);
+    border-top-color: rgba(0, 0, 0, 0.71);
+    border-bottom-color: rgba(0, 0, 0, 0.71);
+}
