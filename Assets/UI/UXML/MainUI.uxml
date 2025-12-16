@@ -1,0 +1,26 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/USS/main-menu.uss?fileID=7433441132597879392&amp;guid=678cc8b084fb87949b15b8f8ec9f1f5f&amp;type=3#main-menu" />
+    <ui:VisualElement name="MainUI" class="root" style="flex-grow: 1;">
+        <ui:VisualElement name="Panel" class="panel screen" style="flex-grow: 1; justify-content: center; align-items: center; align-self: auto; display: flex;">
+            <ui:VisualElement name="Container" class="menu" style="flex-grow: 1; width: 279px; height: 915px; position: absolute; top: 93px; left: 500px; justify-content: flex-end; align-items: stretch; align-self: auto; flex-direction: column;">
+                <ui:VisualElement name="Logo" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI/Materials/copyresize.png?fileID=2800000&amp;guid=0ebbc8abe3ec9ef4b8b67463fdf1cc58&amp;type=3#copyresize&quot;);" />
+                <ui:Button text="Start Game" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StartButton" class="unity-button" />
+                <ui:Button text="Settings" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SettingsButton" class="unity-button" />
+                <ui:Button text="Quit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="QuitButton" class="unity-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="TopBar" class="screen" style="flex-grow: 1; min-width: 0; min-height: 0; max-width: 1920px; max-height: 200px; flex-direction: row; display: flex; position: absolute;">
+            <ui:Button text="II" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Pause" enable-rich-text="false" class="PauseButton" style="font-size: 50px; color: rgb(0, 0, 0); width: 100px; min-width: 50px; min-height: 50px; max-height: 100px; max-width: 100px; position: absolute; left: 20px;" />
+            <ui:VisualElement name="Health" style="flex-grow: 1; flex-direction: column; justify-content: space-between; align-items: center; padding-top: 37px; align-self: auto; padding-right: 37px; min-width: 500px; max-width: 600px; max-height: 500px; min-height: 200px; padding-bottom: 37px; padding-left: 37px; position: absolute; right: 0;">
+                <ui:ProgressBar value="80" title="Health" name="HealthBar" focusable="false" style="position: relative; left: auto; right: 0; top: 0; align-self: center; width: 500px; height: 50px; min-height: 50px; -unity-font-style: bold; font-size: 20px; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; align-items: flex-start; justify-content: center; flex-basis: auto;" />
+                <ui:ProgressBar value="80" title="Skills" name="SkillBar" focusable="false" style="position: relative; left: auto; right: 0; top: 0; align-self: center; width: 500px; height: 50px; min-height: 50px; -unity-font-style: bold; font-size: 20px; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; align-items: flex-start; justify-content: center; flex-basis: auto;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="PauseMenu" class="screen" style="flex-grow: 1; align-self: auto; justify-content: center;">
+            <ui:VisualElement name="innermenu" class="menu pauseMenu" style="flex-grow: 1; width: 33.33%; align-self: center; justify-content: center; height: 50%; max-height: 70%;">
+                <ui:Button text="Resume Game" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Resume" class="unity-button" />
+                <ui:Button text="Quit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Quit" class="unity-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

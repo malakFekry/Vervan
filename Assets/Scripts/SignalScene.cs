@@ -16,6 +16,13 @@ public class SignalScene : MonoBehaviour
     }
     public void Signal()
     {
+              
         SceneManager.LoadScene(1);
+        if (UIManager.Instance == null) Debug.Log("null zeft");
+        else
+        {
+            Debug.Log("not null zeft");
+            UIManager.Instance.OnTimelineSignal();
+        }
     }
 }
