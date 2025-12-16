@@ -29,7 +29,14 @@ public class BoxController : MonoBehaviour
         if(other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E) && !isPlayerWinner)
         {
             GameObject miniGameInstance = Instantiate(miniGamePrefab);
-            miniGameInstance.GetComponentInChildren<GameManager>().boxController = this;
+            if(miniGameInstance.GetComponentInChildren<GameManager>() != null)
+            {
+                miniGameInstance.GetComponentInChildren<GameManager>().boxController = this;
+            }
+            else
+            {
+                miniGameInstance.GetComponentInChildren<AssetsN.GameManager>().boxController = this;
+            }
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             //boxLabel.text = "";
@@ -47,5 +54,6 @@ public class BoxController : MonoBehaviour
         isPlayerWinner = true;
         boxLabel.text = "";
         GetComponent<Animator>().SetTrigger("Win");
+        GameController.instance.CollectMap();
     }
 }
