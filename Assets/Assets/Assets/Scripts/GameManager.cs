@@ -81,12 +81,12 @@ public class GameManager : MonoBehaviour
 
         if (isPaused)
         {
-            Time.timeScale = 0; // Freeze
+            // Time.timeScale = 0; // Freeze
             if (pausePanel) pausePanel.SetActive(true);
         }
         else
         {
-            Time.timeScale = 1; // Unfreeze
+            // Time.timeScale = 1; // Unfreeze
             if (pausePanel) pausePanel.SetActive(false);
         }
     }
@@ -103,6 +103,7 @@ public class GameManager : MonoBehaviour
     {   Time.timeScale = 1; // IMPORTANT: Unfreeze time before quitting!
         Debug.Log("Quit Game Requested"); // Shows in Editor Console
         Destroy(transform.parent.gameObject); // Clean up GameManager
+        boxController.isGameOpen = false;
     }
     public void WinGame()
     {

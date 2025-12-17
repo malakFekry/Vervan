@@ -17,7 +17,7 @@ public class TileController : MonoBehaviour
     public Color correctColor = Color.green; // إجابة صح (أخضر علطول)
     public Color wrongColor = Color.red; // إجابة غلط (أحمر علطول)
 
-    void Awake()
+    void Start()
     {
         myImage = GetComponent<Image>();
         myButton = GetComponent<Button>();
@@ -42,9 +42,9 @@ public class TileController : MonoBehaviour
         myImage.color = normalColor;
     }
 
-    public void EnableInteraction(bool enable)
+    public void EnableInteraction(bool tileEnabled)
     {
-        myButton.interactable = enable;
+        myButton.interactable = tileEnabled;
     }
 
     // دالة التلوين البسيطة (زي الكود القديم)

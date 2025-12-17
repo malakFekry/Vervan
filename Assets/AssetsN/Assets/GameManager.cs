@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     private int currentTrial = 0;
     private int currentScore = 0;
     private int currentMistakes = 0;
-    private int patternSize = 4; 
+    private int patternSize = 5; 
     private int correctTilesClicked = 0;
     private Coroutine turnTimer; // متغير عشان نتحكم في العداد
     public BoxController boxController;
@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartNewTrial()
     {
+        yield return null;
         if (gridCanvasGroup != null) gridCanvasGroup.alpha = 1f;
 
         currentTrial++;
