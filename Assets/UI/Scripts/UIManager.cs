@@ -188,7 +188,7 @@ public class UIManager : MonoBehaviour
         gameStarted = true;
         IsPaused = false;
         ShowHUD();
-        // Time.timeScale = 1f;
+        Time.timeScale = 1f;
         if (playableDirector != null)
             playableDirector.Play();
         // Ensure UI doesn't intercept gameplay input
