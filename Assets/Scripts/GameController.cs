@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour
 
     private IEnumerator DelayedCity()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSecondsRealtime(5f);
         SceneManager.LoadScene(0);
     }
 

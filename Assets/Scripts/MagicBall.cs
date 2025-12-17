@@ -17,8 +17,6 @@ public class MagicBall : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            Debug.Log("Player hit by magic ball!");
-            // Here you can add logic to handle what happens when the player is hit by the magic ball
             GameController.instance.ShowWinPanel();
         }
         

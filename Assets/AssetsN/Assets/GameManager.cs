@@ -177,7 +177,16 @@ public class GameManager : MonoBehaviour
         UpdateUI();
     }
 
-    bool CheckIfPatternComplete()
+        void LateUpdate()
+        {
+            if (Cursor.lockState == CursorLockMode.Locked)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+        }
+
+        bool CheckIfPatternComplete()
     {
         correctTilesClicked = 0;
         foreach (var tile in currentPattern)

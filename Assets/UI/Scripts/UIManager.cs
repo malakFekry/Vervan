@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
-using UnityEngine.SceneManagement;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 
 public class UIManager : MonoBehaviour
@@ -68,39 +68,36 @@ public class UIManager : MonoBehaviour
         resumeGame.clicked += Resume;
 
         QuitPause = root.Q<Button>("Quit");
-        QuitPause.clicked += ShowMainMenu;
+        QuitPause.clicked += OnQuit;
 
         if (startScene)
             ShowMainMenu();
         else {
             ShowHUD();
-            // Let world raycasts pass through the UI Toolkit document.
-            // Ignore pointer picking on the root so physics/graphics raycasts hit scene objects.
-            // Keep interactive controls clickable by setting them to Position.
-            root.pickingMode = PickingMode.Ignore;
-
-            startButton.pickingMode = PickingMode.Ignore;
-            pauseButton.pickingMode = PickingMode.Ignore;
-            resumeGame.pickingMode = PickingMode.Position;
-            QuitPause.pickingMode = PickingMode.Position;
-
-            // Ensure the main UI panels don't block raycasts
-            mainMenu.pickingMode = PickingMode.Ignore;
-            hud.pickingMode = PickingMode.Ignore;
-            pauseMenu.pickingMode = PickingMode.Ignore;
         }
     }
 
     void SetCursorForMenu()
     {
-        // UnityEngine.Cursor.lockState = CursorLockMode.None;
-        // UnityEngine.Cursor.visible = true;
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+        UnityEngine.Cursor.visible = true;
     }
 
     void SetCursorForGameplay()
     {
-        // UnityEngine.Cursor.lockState = CursorLockMode.Locked;
-        // UnityEngine.Cursor.visible = false;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        UnityEngine.Cursor.visible = false;
+    }
+
+    void SetUIInteraction(bool enabled)
+    {
+        if (root == null) return;
+        var mode = enabled ? PickingMode.Position : PickingMode.Ignore;
+        root.pickingMode = mode;
+        // Ensure top-level containers follow the same picking mode
+        if (mainMenu != null) mainMenu.pickingMode = mode;
+        if (hud != null) hud.pickingMode = mode;
+        if (pauseMenu != null) pauseMenu.pickingMode = mode;
     }
 
     public void OnTimelineSignal()
@@ -110,6 +107,12 @@ public class UIManager : MonoBehaviour
         
         ShowHUD();
     }
+
+    public void OnQuit() {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
+    }
+
     public void OnWinningGame()
     {
         ShowHUD();
@@ -119,6 +122,7 @@ public class UIManager : MonoBehaviour
     public void OnEnteringGame()
     {
         hud.RemoveFromClassList("active");
+        SetUIInteraction(false);
         // UnityEngine.Cursor.lockState = CursorLockMode.None;
         // UnityEngine.Cursor.visible = true;
         //pauseMenu.AddToClassList("active");
@@ -128,7 +132,7 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("nehideee ger");
         mainMenu.RemoveFromClassList("active");
-        hud.RemoveFromClassList("active");
+        // hud.RemoveFromClassList("active");
         pauseMenu.RemoveFromClassList("active");
 
     }
@@ -138,10 +142,11 @@ public class UIManager : MonoBehaviour
         Debug.Log("ner manager");
         HideAll();
         SetCursorForMenu();
-        // SceneManager.LoadScene(0);
         healthBar.value = 100;
         skillBar.value = 100;
         mainMenu.AddToClassList("active");
+        // When showing main menu (or start scene) we want UI interaction enabled
+        SetUIInteraction(true);
     }
 
     public void ShowPauseMenu()
@@ -156,15 +161,18 @@ public class UIManager : MonoBehaviour
         HideAll();
         SetCursorForMenu();
         pauseMenu.AddToClassList("active");
+        // Pause menu must accept interactions so the player can press resume/quit
+        SetUIInteraction(true);
     }
     public void Resume()
     {
-        
         if (!IsPaused) return;
         IsPaused = false;
-        ShowHUD();
-        // Time.timeScale = 1f;
+        // ShowHUD();
+        HideAll();
+        Time.timeScale = 1f;
         Debug.Log("Game Resumed");
+        SetCursorForGameplay();
     }
     public void ShowHUD()
     {
@@ -172,6 +180,8 @@ public class UIManager : MonoBehaviour
         HideAll();
         //SetCursorForMenu();
         hud.AddToClassList("active");   
+        // During gameplay HUD should not block raycasts — allow raycasts to pass through
+        SetUIInteraction(false);
     }
     public void startGame()
     {
@@ -181,8 +191,10 @@ public class UIManager : MonoBehaviour
         // Time.timeScale = 1f;
         if (playableDirector != null)
             playableDirector.Play();
+        // Ensure UI doesn't intercept gameplay input
+        SetUIInteraction(false);
         Debug.Log("Game started");
-        
+        SetCursorForGameplay();
     }
     public void TogglePause()
     {

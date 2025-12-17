@@ -70,6 +70,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void LateUpdate()
+    {
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+    }
+
     // --- BUTTON FUNCTIONS (Connect these in Inspector) ---
 
     // 1. For the "Resume" Button AND the Top Corner Pause Button
